@@ -29,6 +29,7 @@
      }
   }
   // echo $path
+  // 根据url中的路径返回相应的页面
   include('./views/'.$dir.'/'.$filename.'.html');
 
  ?>
