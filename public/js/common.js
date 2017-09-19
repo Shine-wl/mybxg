@@ -1,4 +1,4 @@
-define(['jquery', 'cookie'], function ($) {
+define(['jquery', 'template', 'cookie'], function ($, template) {
   // NProgress.start();
 
   // NProgress.done();
@@ -26,10 +26,12 @@ define(['jquery', 'cookie'], function ($) {
     location.href = '/main/login'
   }
   // 设置用户信息
-  var loginfo = loginfo && JSON.parse($.cookie('loginfo'));
+  var loginfo = $.cookie('loginfo');
+  loginfo = loginfo && JSON.parse($.cookie('loginfo'));
   if (loginfo) {
-    $('#loginfo div img').attr('src', loginfo.tc_avatar);
-    $('#loginfo h4').html(loginfo.tc_name);
+    var tpl = '<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
+    var html = template.render(tpl, loginfo);
+    $('#loginfo').html(html);
   }
 
   // console.log(JSON.parse($.cookie('loginfo')));
