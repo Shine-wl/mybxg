@@ -27,12 +27,12 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
   }
   // 设置用户信息
   var loginfo = $.cookie('loginfo');
+  console.log(loginfo)
   loginfo = loginfo && JSON.parse($.cookie('loginfo'));
-  if (loginfo) {
+
+  if ($.cookie('loginfo')) {
     var tpl = '<div class="avatar img-circle"><img src="{{tc_avatar}}"></div><h4>{{tc_name}}</h4>';
     var html = template.render(tpl, loginfo);
-    $('#loginfo').html(html);
+    $('#logfo').html(html);
   }
-
-  // console.log(JSON.parse($.cookie('loginfo')));
 });

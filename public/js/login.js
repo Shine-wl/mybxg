@@ -11,7 +11,9 @@ define(['jquery','cookie'],function ($) {
           console.log(data);
           if (data.code == 200) {
             location.href = '/main/index';
-            $.cookie('loginfo',JSON.stringify(data.result));
+            $.cookie('loginfo',JSON.stringify(data.result),{
+              path:'/'
+            });
             // "window.location.href"、"location.href"
             // 是本页面跳转
             //   "parent.location.href"
