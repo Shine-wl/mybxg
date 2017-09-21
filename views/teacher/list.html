@@ -31,8 +31,8 @@
               <div class="input-group">
                 <input type="text" class="form-control input-sm">
                 <span class="input-group-btn">
-                                    <button class="btn btn-success btn-sm">搜索</button>
-                                </span>
+                    <button class="btn btn-success btn-sm">搜索</button>
+                 </span>
               </div>
             </form>
           </div>
@@ -134,7 +134,7 @@
       <td>{{$value.tc_name}}</td>
       <td>{{$value.tc_roster}}</td>
       <td>{{$value.tc_join_date}}</td>
-      <td>{{if $value.tc_status==0}} 女 {{else}} 男 {{/if}}
+      <td>{{if $value.tc_gender==1}} 女 {{else}} 男 {{/if}}
       </td>
       <td>{{$value.tc_cellphone}}</td>
       <td data-tcId='{{$value.tc_id}}' data-status='{{$value.tc_status}}'>

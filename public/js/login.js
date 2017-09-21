@@ -1,6 +1,7 @@
 define(['jquery','cookie'],function ($) {
   //实现登录功能
    $('#loginBtn').click(function () {
+    console.log(123)
       $.ajax({
         url: '/api/login',
         type: 'post',
@@ -8,7 +9,7 @@ define(['jquery','cookie'],function ($) {
         dataType: 'json',
         success: function (data) {
           console.log(123)
-          console.log(data);
+          // console.log(data);
           if (data.code == 200) {
             location.href = '/main/index';
             $.cookie('loginfo',JSON.stringify(data.result),{
