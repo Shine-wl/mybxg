@@ -27,7 +27,7 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
   }
   // 设置用户信息
   var loginfo = $.cookie('loginfo');
-  console.log(loginfo)
+  // console.log(loginfo)
   loginfo = loginfo && JSON.parse($.cookie('loginfo'));
 
   if ($.cookie('loginfo')) {

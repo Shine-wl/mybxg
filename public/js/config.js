@@ -7,6 +7,8 @@ require.config({
     bootstrap:'bootstrap/js/bootstrap',
     common: '../js/common',
     login: '../js/login',
+    util: '../js/util',
+    teacheradd: '../js/teacher-add',
     teacherlist: '../js/teacher-list'
   },
   shim: {
