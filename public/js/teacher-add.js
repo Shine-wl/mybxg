@@ -1,4 +1,4 @@
-define(['util', 'jquery', 'template','datepicker','lanugare'], function (u, $, template) {
+define(['util', 'jquery', 'template', 'datepicker', 'lanugare', 'validate', 'form'], function (u, $, template) {
   var tcId = u.qs('tc_id');
   if (tcId) {
     // 编辑操作
@@ -13,7 +13,7 @@ define(['util', 'jquery', 'template','datepicker','lanugare'], function (u, $, t
         console.log(data)
         var html = template('teacherTpl', data.result);
         $('#teacherInfo').html(html);
-          submitForm('/api/teacher/update');
+        submitForm('/api/teacher/update');
       }
     })
   } else {
@@ -24,20 +24,52 @@ define(['util', 'jquery', 'template','datepicker','lanugare'], function (u, $, t
   }
   // 表单提交
   function submitForm(url) {
-    $('#teacherBtn').click(function () {
-      console.log($('#teacherForm').serialize())
-      $.ajax({
-        url: url,
-        data: $('#teacherForm').serialize(),
-        type: 'post',
-        dataType: 'json',
-        success: function (data) {
-          console.log(data)
-          if (data.code) {
-            location.href = '/teacher/list';
+    $('#teacherForm').validate({
+      sendForm: false,//禁止submit的默认操作
+      valid: function () {
+        $('#teacherForm').ajaxSubmit({
+          url: url,
+          type: 'post',
+          dataType: 'json',
+          success: function (data) {
+            if (data.code == 200) {
+              location.href = '/teacher/list';
+            }
           }
+        });
+      },
+      description: {
+        tcName: {
+          required: '姓名不能为空'
+        },
+        tcPass: {
+          required: '密码不能为空',
+          pattern: '密码为六位数字'
+        },
+        tcJoinDate: {
+          required: '日期不能为空'
         }
-      })
+      }
     })
+
   }
+
+  // function submitForm(url) {
+  //   $('#teacherBtn').click(function () {
+  //     console.log($('#teacherForm').serialize())
+  //     $.ajax({
+  //       url: url,
+  //       data: $('#teacherForm').serialize(),
+  //       type: 'post',
+  //       dataType: 'json',
+  //       success: function (data) {
+  //         console.log(data)
+  //         if (data.code) {
+  //           location.href = '/teacher/list';
+  //         }
+  //       }
+  //     })
+  //   })
+  // }
+
 })
