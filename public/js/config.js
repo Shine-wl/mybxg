@@ -10,6 +10,7 @@ require.config({
     validate: 'validate/jquery-validate.min',
     uploadify: 'upload/jquery.uploadify.min',
     form: 'jquery-form/jquery.form',
+    region: 'jquery-region/jquery.region',
     common: '../js/common',
     login: '../js/login',
     util: '../js/util',

@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'uploadify'], function ($, template) {
+define(['jquery', 'template', 'uploadify','region'], function ($, template) {
   $.ajax({
     url: '/api/teacher/profile',
     type: 'get',
@@ -20,6 +20,10 @@ define(['jquery', 'template', 'uploadify'], function ($, template) {
             var obj=JSON.parse(b)
             $('.preview img').attr('src',obj.result.path)
           }
+        })
+        // 省市县三级联动设置
+        $('#pcd').region({
+          url:'/public/assets/jquery-region/region.json'
         })
       }
     }
