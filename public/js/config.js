@@ -13,7 +13,8 @@ require.config({
     login: '../js/login',
     util: '../js/util',
     teacheradd: '../js/teacher-add',
-    teacherlist: '../js/teacher-list'
+    teacherlist: '../js/teacher-list',
+    settings: '../js/settings'
   },
   shim: {
     bootstrap: {
