@@ -6,9 +6,9 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
   $('.navs ul').prev('a').on('click', function () {
     $(this).next().slideToggle();
   });
-  // $('.navs ul li a').click(function(){
-  //    $(this).addClass('active').closest('li').siblings('li').children('a').removeClass('active'); 
-  // })
+  $('.navs ul li a').click(function(){
+     $(this).addClass('active').closest('li').siblings('li').children('a').removeClass('active'); 
+  })
   // 退出登录
   $('#loginOutBtn').click(function () {
     $.ajax({

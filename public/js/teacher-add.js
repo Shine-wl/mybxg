@@ -38,13 +38,13 @@ define(['util', 'jquery', 'template', 'datepicker', 'lanugare', 'validate', 'for
           }
         });
       },
-      description: {
-        tcName: {
-          required: '姓名不能为空'
+      description: { //判断的数据
+        tcName: { //名字用来匹配
+          required: '姓名不能为空' //判断是否为空
         },
         tcPass: {
           required: '密码不能为空',
-          pattern: '密码为六位数字'
+          pattern: '密码为六位数字' //判断是否符合格式要求
         },
         tcJoinDate: {
           required: '日期不能为空'
