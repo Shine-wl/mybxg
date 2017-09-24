@@ -9,7 +9,7 @@ require.config({
     lanugare: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     validate: 'validate/jquery-validate.min',
     uploadify: 'upload/jquery.uploadify.min',
-    ckeditor: 'ckeditor/ckeditor',//富文本插件
+    ckeditor: 'ckeditor/ckeditor', //富文本插件
     form: 'jquery-form/jquery.form',
     region: 'jquery-region/jquery.region',
     common: '../js/common',
@@ -17,7 +17,8 @@ require.config({
     util: '../js/util',
     teacheradd: '../js/teacher-add',
     teacherlist: '../js/teacher-list',
-    settings: '../js/settings'
+    settings: '../js/settings',
+    index: '../js/index'
   },
   shim: {
     bootstrap: {

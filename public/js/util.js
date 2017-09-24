@@ -1,4 +1,4 @@
-define(['jquery'],function ($) {
+define(['jquery'], function ($) {
   return {
     qs: function (key) {
       var param = location.search.substr(1);
@@ -14,6 +14,9 @@ define(['jquery'],function ($) {
         })
       }
       return tcId;
+    },
+    setMenu: function (path) {
+      $('.aside .navs a[href="' + path + '"]').addClass('active');
     }
   }
 })

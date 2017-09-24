@@ -1,14 +1,11 @@
-define(['jquery', 'template', 'cookie'], function ($, template) {
+define(['jquery', 'template', 'util', 'cookie'], function ($, template, util) {
   // NProgress.start();
-
   // NProgress.done();
-
+  //设置侧边菜单选中高亮
+  util.setMenu(location.pathname);
   $('.navs ul').prev('a').on('click', function () {
     $(this).next().slideToggle();
   });
-  $('.navs ul li a').click(function(){
-     $(this).addClass('active').closest('li').siblings('li').children('a').removeClass('active'); 
-  })
   // 退出登录
   $('#loginOutBtn').click(function () {
     $.ajax({
