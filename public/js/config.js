@@ -9,6 +9,7 @@ require.config({
     lanugare: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     validate: 'validate/jquery-validate.min',
     uploadify: 'upload/jquery.uploadify.min',
+    ckeditor: 'ckeditor/ckeditor',//富文本插件
     form: 'jquery-form/jquery.form',
     region: 'jquery-region/jquery.region',
     common: '../js/common',
@@ -30,6 +31,9 @@ require.config({
     },
     uploadify: {
       deps: ['jquery']
+    },
+    ckeditor: {
+      exports: 'CKEDITOR'
     }
   }
 });

@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'uploadify','region'], function ($, template) {
+define(['jquery', 'template','ckeditor','uploadify','region','datepicker','lanugare'], function ($, template,CKEDITOR) {
   $.ajax({
     url: '/api/teacher/profile',
     type: 'get',
@@ -25,6 +25,17 @@ define(['jquery', 'template', 'uploadify','region'], function ($, template) {
         $('#pcd').region({
           url:'/public/assets/jquery-region/region.json'
         })
+        //处理富文本
+        CKEDITOR.replace('ckeditor',{
+          toolbarGroups : [
+            { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+            { name: 'styles', groups: [ 'styles' ] },
+            { name: 'colors', groups: [ 'colors' ] },
+            { name: 'about', groups: [ 'about' ] }
+          ]
+        });
+
       }
     }
   })
