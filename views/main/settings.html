@@ -24,11 +24,13 @@
         </div>
     </div>
     <script type="text/html" id="settingTpl">
-        <form action="" class="form-horizontal">
+        <form id="settingsForm" class="form-horizontal">
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">姓名</label>
                             <div class="col-xs-5">
                                 <p class="form-control-static">{{tc_name}}</p>
+                                <!-- //隐藏的input 记录tc_id -->
+                                <input type="hidden" name="tc_id" value="{{tc_id}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -71,13 +73,13 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">籍贯</label>
                             <div class="col-xs-5" id="pcd">
-                                <select name="" data-id='{{tc_province}}' id="p" class="form-control input-sm">
+                                <select name="tc_province" data-id='{{tc_province}}' id="p" class="form-control input-sm">
                                     <option value="">请选择省</option>
                                 </select>
-                                <select name="" data-id='{{tc_city}}' id="c" class="form-control input-sm">
+                                <select name="tc_city" data-id='{{tc_city}}' id="c" class="form-control input-sm">
                                     <option value="">请选择市</option>
                                 </select>
-                                <select name="" data-id='{{tc_district}}' id="d" class="form-control input-sm">
+                                <select name="tc_district" data-id='{{tc_district}}' id="d" class="form-control input-sm">
                                     <option value="">请选择区</option>
                                 </select>
                             </div>
@@ -103,7 +105,7 @@
                         <div class="form-group">
                             <label for="" class="col-xs-3 control-label">个人介绍</label>
                             <div class="col-xs-5 ckeditor">
-                                <textarea id="ckeditor" name="" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
+                                <textarea id="ckeditor" name="tc_introduce" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
