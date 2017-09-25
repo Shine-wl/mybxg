@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'util', 'ckeditor'], function ($, template, util) {
+define(['jquery', 'template', 'util','validate','form','ckeditor'], function ($, template, util) {
   // 设置导航菜单选中
   util.setMenu('/course/add');
   var csId = util.qs('cs_id');
@@ -10,6 +10,7 @@ define(['jquery', 'template', 'util', 'ckeditor'], function ($, template, util) 
       cs_id: csId
     },
     dataType: 'json',
+    //编辑和添加课程界面的共享
     success: function (data) {
       if (flag) {
         data.result.operate = '编辑课程';
@@ -18,8 +19,9 @@ define(['jquery', 'template', 'util', 'ckeditor'], function ($, template, util) 
       }
       var html = template('basicTpl', data.result);
       $('#basicInfo').html(html);
-      $('#firstType').change(function () {
-        // 
+
+      //根据以及分类的id查询所有的二级分类的数据
+      $('#firstType').change(function () {    
         var pid = $(this).val();
         $.ajax({
           type:'get',
@@ -39,6 +41,25 @@ define(['jquery', 'template', 'util', 'ckeditor'], function ($, template, util) 
           }
         });
       });
+      //处理表单提交
+      $('#basicForm').validate({
+        sendForm:false,
+        valid:function(){
+          $(this).ajaxSubmit({
+            url:'/api/course/update/basic',
+            type:'POST',
+            dataType:'json',
+            data:{
+              cs_id:csId
+            },
+            success:function(data){
+              // 下一步跳转到封面裁切界面
+              location.href='/course/picture?cs_id='+data.result.cs_id;
+            }
+
+          });
+        }
+      })
     }
   });
 });
