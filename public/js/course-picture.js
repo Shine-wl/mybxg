@@ -2,6 +2,8 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop','form'], function ($,
   // 设置导航菜单选中
   util.setMenu('/course/add');
   var csId = util.qs('cs_id');
+
+  //请求页面数据
   $.ajax({
     url: '/api/course/picture',
     type: 'get',
@@ -10,6 +12,7 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop','form'], function ($,
       cs_id: csId
     },
     success: function (data) {
+
       var html = template('pictureTpl', data.result);
       $('#pictureInfo').html(html);
       // 上传图片处理
@@ -34,9 +37,11 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop','form'], function ($,
 
       //获取图片
       var img = $('.preview img');
-
+      var nowCrop=null; //保证裁切实例的唯一性
+      // 设置裁剪保存按钮功能
       $('#cropBtn').click(function () {
         var flag = $(this).attr('data-flag');
+        // 存在这个属性就发送数据，提交页面
         if (flag) {
           //第二次点击按钮 提交页面
           $('#cropForm').ajaxSubmit({
@@ -45,9 +50,10 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop','form'], function ($,
             url:'/api/course/update/picture',
             data:{cs_id:csId},
             success:function(data){
-              location.href='/course/lesson';
+              location.href='/course/lesson?cs_id='+data.result.cs_id;
             }
           })
+          // 不存在就改变按钮状态，并添加flag属性
         } else {
           //第一次点击按钮
           $(this).text('保存图片').attr('data-flag', true);
@@ -59,6 +65,8 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop','form'], function ($,
         img.Jcrop({
           aspectRatio: 2
         }, function () {
+          nowCrop && nowCrop.destroy(); //销毁当前实例
+          nowCrop=this; //作用防止调用两次出现两个实例
           // 设置 将缩略框显示出来
           $('.thumb').html('');
           this.initComponent('Thumbnailer', { width: 240, height: 120, mythumb: '.thumb' });
