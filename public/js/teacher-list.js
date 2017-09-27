@@ -1,4 +1,4 @@
-define(['jquery', 'template','bootstrap'], function ($, template) {
+define(['jquery', 'template','bootstrap','state'], function ($, template) {
   $.ajax({
     url: '/api/teacher',
     type: 'get',

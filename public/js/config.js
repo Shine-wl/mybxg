@@ -13,6 +13,7 @@ require.config({
     form: 'jquery-form/jquery.form',//表单提交插件
     region: 'jquery-region/jquery.region',//区域选择插件
     jcrop: 'jcrop/js/jcrop.min',//区域选择插件
+    echarts: 'echarts/echarts.min',
     common: '../js/common',
     login: '../js/login',
     util: '../js/util',
@@ -24,7 +25,8 @@ require.config({
     courseadd: '../js/course-add',
     coursebasic: '../js/course-basic',
     coursepicture: '../js/course-picture',
-    courselesson: '../js/course-lesson'
+    courselesson: '../js/course-lesson',
+    state: '../js/state'
   },
   shim: {
     bootstrap: {
